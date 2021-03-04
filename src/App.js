@@ -3,6 +3,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 import Products from './components/Products'
+import Product_new from './components/Product_new'
 
 class App extends React.Component{
   constructor(){
@@ -21,11 +22,12 @@ render(){
         <a href="/">React Shopping</a>
       </header>
       <div>
-      <Products />
-
+      <div className="main">
         
+        Products
+      <Products/>
+      </div>      
       </div>
-      <footer>All right reserved</footer>
     </div>
   );
 }
