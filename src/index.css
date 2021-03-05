@@ -12,6 +12,9 @@ body,input,select,textarea{
   font-size: 1.6rem;
   font-family: Arial, Helvetica, sans-serif;
 }
+a{
+  text-decoration: none;
+}
 
 .grid-container {
   display: grid;
@@ -19,9 +22,9 @@ body,input,select,textarea{
     "header"
     "main"
     "footer";
-  grid-template-rows: 5rem 1fr 5rem;
+  grid-template-rows: 20rem 1fr 5rem;
   grid-template-columns: 1fr;
-  height: 100%;
+
 }
 
 a:hover{
@@ -44,17 +47,8 @@ header a{
 }
 
 main{
-  grid-area: main;
+  grid-area: 100rem;
 
-}
-
-footer{
-  grid-area: footer;
-  background-color: #203040;
-  color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .content{
@@ -63,8 +57,80 @@ footer{
 }
 
 .main{
-  flex:3 60rem
+  flex:4 100rem
 } 
-.sidebar{
-  flex: 1 20rem;
+
+/* products height='120' width='150' */
+.products{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+}
+.products li{
+  flex:2 30rem;
+  justify-content: center;
+  height: 20rem;
+  padding: 6rem;
+  margin: 0rem;
+  border: 1px solid black;
+}
+
+.product{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.product img{
+
+  max-width: 10rem;
+  max-height: 25rem;
+  align-items: center;
+}
+
+.product-price{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.product-price button{
+  text-align: center;
+  flex: 1;
+}
+.product-price div{
+  font-size: 2rem;
+}
+
+.button{
+  padding: 2rem;
+  border: 0.1rem #c0c0c0 solid;
+  background-color: #f0f0f0;
+  cursor:pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.button.secondary{
+  background-color: #f0f0f0;
+  
+}
+
+
+/*filters */
+.filter{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem;
+  border-bottom: 0.1rem #c0c0c0 solid;
+}
+.filter div{
+  flex: 1;
 }
