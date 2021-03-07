@@ -1,26 +1,30 @@
 import React from 'react'
 import formatCurrency from'./utility'
 
-const Product_Page=props=>(
+const Product_Page=({posts,loading})=>(
+
                     <div>
                         <ul className="products">
                             {
-                                props.getData.map((xproduct)=>{
-                                    return(<li key={xproduct.skuId}>
-                                    <div className="product">
-                                        <a href={"#"+xproduct.skuId}>
+                                posts.map((xproduct)=>{
+                                    return(<div className="col-md-6 border p-4" key={xproduct.skuId}>
+                                    <li >
+                                    <div className="product">   
                                     <img src={xproduct.skuImageUrl} alt={xproduct.categoryName}/>
-                                    <p>{xproduct.skuName}</p>  
+                                    </div>
+                                    <div className="name">
+                                    <a href={"!#"+xproduct.deepLinkUrl}>
+                                    <p >{xproduct.skuName}</p>
+                                    
                                     </a>
+                                    </div>
                                     <div className="product-price">
-                                        <p>{formatCurrency(xproduct.defaultPrice)}</p>
-                                        <button className="button primary">Filter</button>
+                                        <p className="price">{formatCurrency(xproduct.defaultPrice)}</p>
                                         
                                     </div>
-                                    </div>
-
                                     
-                                    </li>)
+                                    </li>
+                                    </div>)
 
                                 })
                             }
@@ -34,43 +38,3 @@ const Product_Page=props=>(
 );
 
 export default Product_Page
-
-
-
-// export default class Product_Page extends Component {
-//     constructor(){
-//         super();
-//         this.state={
-//             productList:[]        }
-//     }
-
-
-//     render() {
-//         return (
-//             <div>
-//                 <ul className="products">
-//                 {
-//                             this.state.productList.map((xproduct)=>{
-//                                 return<li key={xproduct.skuId}>
-//                                     <div className="product">
-//                                         <a href={"#"+xproduct.skuId}>
-//                                     <img src={xproduct.skuImageUrl} alt={xproduct.categoryName}/>
-//                                     <p>{xproduct.skuName}</p>  
-//                                     </a>
-//                                     <div className="product-price">
-//                                         <p>{formatCurrency(xproduct.defaultPrice)}</p>
-//                                         <button className="button primary">Filter</button>
-                                        
-//                                     </div>
-//                                     </div>
-
-                                    
-//                                     </li>
-//                             })
-//                         }
-//                 </ul>
-                
-//             </div>
-//         )
-//     }
-// }
