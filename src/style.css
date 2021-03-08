@@ -1,0 +1,30 @@
+
+
+.ad{
+    display: flex !important;
+    background-image: url(https://storage.googleapis.com/hng-static/social-icons/logo_hng_big.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: -12rem;
+    width: 151px;
+    height: 30px;
+
+}
+
+
+
+.fees{
+    display: flex !important;
+    margin-left: 95rem;
+}
+
+.trans{
+    display: flex !important;
+    margin-left: 4rem;
+}
+
+
+.align-center{
+    left: 5rem;
+    font-size: 1.4rem;
+}

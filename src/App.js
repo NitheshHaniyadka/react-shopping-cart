@@ -11,7 +11,7 @@ import Form from './components/Header'
 import Product_Page from './components/Product_Page'
 import Filter from './components/Filter';
 import Modal from "./components/popup";
-import Modal_Filter_Category from "./components/popup";
+import Modal_Filter_Category from "./components/FilterByCategoryModals";
 
 import Pagination from './components/Pagination'
 
@@ -56,16 +56,37 @@ class App extends React.Component{
     const api_call=await fetch(`https://staging.healthandglow.com/api/catalog/product/v6/search/999?app=web&version=3.0.2&tag=loreal-paris&page=${startIndex}:${endIndex}`)
 
     const data = await api_call.json();
-    this.setState({productlist:data.data.products,filterproducts:data.data.products,paginationdata:data.data.products})
+    console.log(data);
+    
+    this.setState({productlist:data.data.products,paginationdata:data.data.products})
+
+
+     
+  }
+
+  
+  getHealthandGlowFilter=async ()=>{
+    
+    const api_call=await fetch(`https://staging.healthandglow.com/api/catalog/product/v6/search/999?app=web&version=3.0.2&tag=loreal-paris&page=0:20&category=lipstick&shade=Maroon`)
+
+    const data_filter = await api_call.json();
+    console.log(data_filter);
+    
+    this.setState({filterproducts:data_filter.data.aggregations})
+
 
      
   }
 
 
+
   componentDidMount(){
-    this.getHealthandGlow()
+    this.getHealthandGlow();
+    this.getHealthandGlowFilter();
   }
 
+
+  //Sort Event
   handleChangeSort=(event)=>{
     const sort=event.target.value
     this.setState((state)=>({
@@ -79,6 +100,23 @@ class App extends React.Component{
     this.modalClose();
 
   }
+
+  //sort category
+  handleChangeCategory=(event)=>{
+    const sort=event.target.value
+    this.setState((state)=>({
+      sort:sort,
+      productlist:this.state.productlist.slice().sort((a,b)=>(
+        sort==="lowest" ?((a.defaultPrice >b.defaultPrice) ?1:-1):
+        sort==="highest"?((a.defaultPrice <b.defaultPrice) ?1:-1):
+        ((a.skuId >b.skuId)?1:-1)     
+      ))    
+    }));
+    this.modalClose();
+
+  }
+
+//input form
   handleChange(e) {
     const target = e.target;
     const name = target.name;
@@ -88,11 +126,13 @@ class App extends React.Component{
       [name]: value
     });
   }
-
+//save
   handleSubmit(e) {
     this.setState({ name: this.state.modalInputName });
     this.modalClose();
   }
+
+  //close button for sort
   modalClose() {
     this.setState({
       modalInputName: "",
@@ -100,18 +140,28 @@ class App extends React.Component{
     });
   }
 
+  //close buttn for filter
+  modalClose_Filter() {
+    this.setState({
+      modalInputName: "",
+      modal_category: false
+    });
+  }
+//sort open 
   modalOpen() {
     this.setState({ modal: true });
   }
-
+//filter by category open
   modalOpen_category() {
-    this.setState({ modal: true });
+    this.setState({ modal_category: true });
   }
 
   
 
 render(){
-  const {productlist,startIndex,postsPerPage}=this.state
+  const {productlist,filterproducts,startIndex,postsPerPage}=this.state
+  console.log(filterproducts);
+
 
    //Get current Posts-
 const indexOfLastPost=startIndex * postsPerPage;
@@ -127,8 +177,8 @@ const indexOfLastPost=startIndex * postsPerPage;
           <div className="col-md-3">
             </div>
             <div className="col-md-3">
-        <Filter size={this.state.size} sort={this.state.sort} handleChangeSize={this.handleChangeSize}
-        handleChangeSort={this.handleChangeSort} count={this.state.filterproducts.length}/>
+        <Filter size={this.state.size} sort={this.state.sort} handleChangeCategory={this.handleChangeCategory}
+        handleChangeSort={this.handleChangeSort} count={this.state.productlist.length}/>
         </div>
         </div>
         
@@ -139,12 +189,12 @@ const indexOfLastPost=startIndex * postsPerPage;
         <div className='col-md-4'>
           <br/>
                     
-                    <button className='btn btn-block btn-primary btn-lg buttonColor' onClick={e => this.modalOpen(e)}>SortByDiscount</button>
+                    <button className='btn btn-block btn-warning btn-lg buttonColor' onClick={e => this.modalOpen(e)}>SortByDiscount</button>
       </div>
       <div className='col-md-4'>
       <br/>      
                     
-                    <button className='btn btn-block btn-primary btn-lg buttonColor' value={this.props.sort} onClick={e => this.modalOpen_category(e)}>FILTER BY CATEGORY</button>
+                    <button className='btn btn-block btn-warning btn-lg buttonColor'  onClick={e => this.modalOpen_category(e)}>FILTER BY CATEGORY</button>
       </div>
       </div>
       <div className="col-md-1"></div>
@@ -170,6 +220,14 @@ const indexOfLastPost=startIndex * postsPerPage;
             </button>
           </div>
         </Modal>
+
+        <Modal_Filter_Category  categoryshow={this.state.filterproducts} show={this.state.modal_category} handleClose={e => this.modalClose_Filter(e)}>
+          <div className="form-group">
+            <button className="btn btn-primary align-left" onClick={event => this.handleChangeCategory(event)} type="button">
+              FILTER ALL
+            </button>
+          </div>
+        </Modal_Filter_Category>
         
       </div>
       </div>
