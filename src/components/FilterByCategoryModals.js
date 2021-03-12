@@ -15,21 +15,6 @@ const Modal_Filter_Category = ({ modalClose_Filter, show, children,categoryshow,
           X
         </button>
         <div className="row">
-        {/* <div>
-        {
-              <div className='col-md-4 '>
-              <ul className='list-group'>
-              {
-                  categoryshow.map((cat,index)=>{
-                      return<li className="list-group-item  border p-3 text-warning " key={index} onClick={getProductData}>{cat.text}</li>
-                  })
-              }
-              </ul>
-              </div>
-              }
-          </div> */}
-
-
           <div className="col-md-4">
 
                     {
