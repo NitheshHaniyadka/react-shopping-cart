@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/my-app/react-shopping-cart/static/css/main.6f1e00ea.chunk.css",
-    "main.js": "/my-app/react-shopping-cart/static/js/main.7a800a55.chunk.js",
-    "main.js.map": "/my-app/react-shopping-cart/static/js/main.7a800a55.chunk.js.map",
-    "runtime-main.js": "/my-app/react-shopping-cart/static/js/runtime-main.a10c3f90.js",
-    "runtime-main.js.map": "/my-app/react-shopping-cart/static/js/runtime-main.a10c3f90.js.map",
-    "static/css/2.150d169a.chunk.css": "/my-app/react-shopping-cart/static/css/2.150d169a.chunk.css",
-    "static/js/2.d7ffd068.chunk.js": "/my-app/react-shopping-cart/static/js/2.d7ffd068.chunk.js",
-    "static/js/2.d7ffd068.chunk.js.map": "/my-app/react-shopping-cart/static/js/2.d7ffd068.chunk.js.map",
-    "index.html": "/my-app/react-shopping-cart/index.html",
-    "static/css/2.150d169a.chunk.css.map": "/my-app/react-shopping-cart/static/css/2.150d169a.chunk.css.map",
-    "static/css/main.6f1e00ea.chunk.css.map": "/my-app/react-shopping-cart/static/css/main.6f1e00ea.chunk.css.map",
-    "static/js/2.d7ffd068.chunk.js.LICENSE.txt": "/my-app/react-shopping-cart/static/js/2.d7ffd068.chunk.js.LICENSE.txt"
+    "main.css": "/relativepath/static/css/main.6f1e00ea.chunk.css",
+    "main.js": "/relativepath/static/js/main.18d4af6c.chunk.js",
+    "main.js.map": "/relativepath/static/js/main.18d4af6c.chunk.js.map",
+    "runtime-main.js": "/relativepath/static/js/runtime-main.cba1521f.js",
+    "runtime-main.js.map": "/relativepath/static/js/runtime-main.cba1521f.js.map",
+    "static/css/2.9d4463a6.chunk.css": "/relativepath/static/css/2.9d4463a6.chunk.css",
+    "static/js/2.13a53540.chunk.js": "/relativepath/static/js/2.13a53540.chunk.js",
+    "static/js/2.13a53540.chunk.js.map": "/relativepath/static/js/2.13a53540.chunk.js.map",
+    "index.html": "/relativepath/index.html",
+    "static/css/2.9d4463a6.chunk.css.map": "/relativepath/static/css/2.9d4463a6.chunk.css.map",
+    "static/css/main.6f1e00ea.chunk.css.map": "/relativepath/static/css/main.6f1e00ea.chunk.css.map",
+    "static/js/2.13a53540.chunk.js.LICENSE.txt": "/relativepath/static/js/2.13a53540.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/relativepath/static/media/fontawesome-webfont.f691f37e.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.a10c3f90.js",
-    "static/css/2.150d169a.chunk.css",
-    "static/js/2.d7ffd068.chunk.js",
+    "static/js/runtime-main.cba1521f.js",
+    "static/css/2.9d4463a6.chunk.css",
+    "static/js/2.13a53540.chunk.js",
     "static/css/main.6f1e00ea.chunk.css",
-    "static/js/main.7a800a55.chunk.js"
+    "static/js/main.18d4af6c.chunk.js"
   ]
 }
