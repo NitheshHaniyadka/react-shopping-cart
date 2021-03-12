@@ -32,14 +32,22 @@ class App extends React.Component{
       indexOfLastPost:'',
       indexOfFirsttPost:'',
       currentPosts:'',
-      pageOfItems:[]
+      pageOfItems:[],
+      itemInformation:[]
       
     };
     this.onChangePage = this.onChangePage.bind(this);
+    this.getProductData=this.getProductData.bind(this)
 
   }
 
-
+  getProductData=(index)=>{ // writting this function inorder to get the value of itemInformation 
+    console.log("yes")
+    this.setState({
+        itemInformation:this.state.filterproducts.aggregations // Get the index based product list of each category
+    })
+    
+}
   
   onChangePage=(pageNumber)=>{
     console.log(`active page is ${pageNumber}`)
@@ -56,7 +64,6 @@ class App extends React.Component{
     const api_call=await fetch(`https://staging.healthandglow.com/api/catalog/product/v6/search/999?app=web&version=3.0.2&tag=loreal-paris&page=${startIndex}:${endIndex}`)
 
     const data = await api_call.json();
-    console.log(data);
     
     this.setState({productlist:data.data.products,paginationdata:data.data.products})
 
@@ -70,7 +77,7 @@ class App extends React.Component{
     const api_call=await fetch(`https://staging.healthandglow.com/api/catalog/product/v6/search/999?app=web&version=3.0.2&tag=loreal-paris&page=0:20&category=lipstick&shade=Maroon`)
 
     const data_filter = await api_call.json();
-    console.log(data_filter);
+    // console.log(data_filter);
     
     this.setState({filterproducts:data_filter.data.aggregations})
 
@@ -156,6 +163,7 @@ class App extends React.Component{
     this.setState({ modal_category: true });
   }
 
+
   
 
 render(){
@@ -167,7 +175,9 @@ render(){
 const indexOfLastPost=startIndex * postsPerPage;
   const indexOfFirsttPost=indexOfLastPost -postsPerPage;
   const currentPosts=productlist.slice(indexOfFirsttPost,indexOfLastPost);
-  console.log(currentPosts);
+  // console.log(currentPosts);
+
+  
 
   return (
     <div className="grid-container">
@@ -221,7 +231,7 @@ const indexOfLastPost=startIndex * postsPerPage;
           </div>
         </Modal>
 
-        <Modal_Filter_Category  categoryshow={this.state.filterproducts} show={this.state.modal_category} handleClose={e => this.modalClose_Filter(e)}>
+        <Modal_Filter_Category itemInformation={this.state.itemInformation} categoryshow={this.state.filterproducts} show={this.state.modal_category} modalClose_Filter={e => this.modalClose_Filter(e)} getProductData={e=>this.getProductData(e)}>
           <div className="form-group">
             <button className="btn btn-primary align-left" onClick={event => this.handleChangeCategory(event)} type="button">
               FILTER ALL
