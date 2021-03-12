@@ -2,48 +2,52 @@ import React from "react";
 import List from "react-nested-list-select";
 //on-modals
 
-const Modal_Filter_Category = ({ handleClose, show, children,categoryshow }) => {
+const Modal_Filter_Category = ({ modalClose_Filter, show, children,categoryshow,getProductData,itemInformation }) => {
   const showHideClassName = show ? "modal d-block" : "modal d-none";
-  console.log(categoryshow);
-  // this.state={
-  //   itemInformation:[]
-  // }
+ 
 
-//   getProductData=(index)=>{ // writting this function inorder to get the value of itemInformation 
-//     this.setState({
-//         itemInformation:this.state.itemList[index].product // Get the index based product list of each category
-//     })
-// }
 
   return (
     <div className={showHideClassName}>
       <div className="modal-container category">
         {children}
-        <button className="modal-close fa-close" onClick={handleClose}>
+        <button className="modal-close fa-close" onClick={modalClose_Filter}>
           X
         </button>
-        <div>
+        <div className="row">
+        {/* <div>
         {
+              <div className='col-md-4 '>
+              <ul className='list-group'>
+              {
+                  categoryshow.map((cat,index)=>{
+                      return<li className="list-group-item  border p-3 text-warning " key={index} onClick={getProductData}>{cat.text}</li>
+                  })
+              }
+              </ul>
+              </div>
+              }
+          </div> */}
 
 
+          <div className="col-md-4">
 
-<div className='col-md-4 '>
-<ul className='list-group'>
-{
-    categoryshow.map((cat,index)=>{
-        return<li className="list-group-item  border p-3 text-warning " key={index}>{cat.text}</li>
-    })
-}
-</ul>
-</div>
+                    {
+                        <ul className="list-group">
+                          {
+                            categoryshow.map((items,index)=>{  
+                              return<li className="list-group-item  border p-4 text-warning " key={index} >{items.name}</li>
 
-        }
-        </div>
-        
-       
-        
+                            })
+                          }
+                        </ul>
+                      
+                    }
+
+     </div> 
       </div>
 
+    </div>
     </div>
   );
 };
